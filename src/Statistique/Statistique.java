@@ -1,16 +1,13 @@
-package Authentification;
+package Statistique;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.Image;
 import java.awt.SystemColor;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import Gerer_Etudiant.Etudiant;
 import Gerer_Enseignant.Enseignant;
@@ -18,13 +15,13 @@ import Parametrage.Parametrage;
 import planification.Planification;
 import Salle.Salle;
 import Statistique.Statistique;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.sql.SQLException;
-import java.awt.event.ActionEvent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
-public class Dashboard extends JFrame {
+public class Statistique extends JFrame {
 
 	private JPanel contentPane;
 
@@ -35,7 +32,7 @@ public class Dashboard extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Dashboard frame = new Dashboard();
+					Statistique frame = new Statistique();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,7 +44,7 @@ public class Dashboard extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Dashboard() {
+	public Statistique() {
 		setBackground(new Color(47,79,79));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1350, 1000);
@@ -70,13 +67,7 @@ public class Dashboard extends JFrame {
 		lblDashboard.setBounds(29, 27, 149, 37);
 		panel.add(lblDashboard);
 		
-		
 		JButton btnGrerEtudiant = new JButton("G\u00E9rer Etudiant");
-		btnGrerEtudiant.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		btnGrerEtudiant.setForeground(Color.WHITE);
-		btnGrerEtudiant.setBackground(new Color(244, 164, 96));
-		btnGrerEtudiant.setBounds(0, 83, 204, 40);
-		panel.add(btnGrerEtudiant);
 		btnGrerEtudiant.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Etudiant Etudiant ;
@@ -89,6 +80,11 @@ public class Dashboard extends JFrame {
 				}
 			}
 		});
+		btnGrerEtudiant.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		btnGrerEtudiant.setForeground(Color.WHITE);
+		btnGrerEtudiant.setBackground(new Color(244, 164, 96));
+		btnGrerEtudiant.setBounds(0, 83, 204, 40);
+		panel.add(btnGrerEtudiant);
 		
 		
 		JButton btnGrerEnseignant = new JButton("G\u00E9rer Enseignant");
@@ -109,27 +105,16 @@ public class Dashboard extends JFrame {
 				}
 			}
 		});
-
-		
-		
-		
 		JButton btnParametrage = new JButton("Paramétrage");
 		btnParametrage.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		btnParametrage.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnParametrage.setForeground(Color.WHITE);
 		btnParametrage.setBackground(new Color(244, 164, 96));
 		btnParametrage.setBounds(0, 177, 204, 40);
 		panel.add(btnParametrage);
-		btnParametrage.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Parametrage Parametrage ;
-				 dispose();
-				 Parametrage = new Parametrage();
-			}
-		});
-		
-		
-		
-		
 		
 		JButton btnSalle = new JButton("G\u00E9rer Salles");
 		btnSalle.setForeground(Color.WHITE);
@@ -137,15 +122,6 @@ public class Dashboard extends JFrame {
 		btnSalle.setBackground(new Color(244, 164, 96));
 		btnSalle.setBounds(0, 224, 204, 40);
 		panel.add(btnSalle);
-		btnSalle.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Salle Salle ;
-				 dispose();
-			
-				 Salle = new Salle();
-				
-			}
-		});
 		
 		JButton btnPlanification = new JButton("Planification");
 		btnPlanification.setForeground(Color.WHITE);
@@ -155,9 +131,6 @@ public class Dashboard extends JFrame {
 		panel.add(btnPlanification);
 		btnPlanification.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Planification Planification ;
-				 dispose();
-				 Planification = new Planification();
 			}
 		});
 		
@@ -168,36 +141,12 @@ public class Dashboard extends JFrame {
 		btnStatistique.setBounds(0, 316, 204, 40);
 		btnStatistique.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Statistique Statistique ;
-				 dispose();
-			
-				 Statistique = new Statistique();
 			}
 		});
 	
 		panel.add(btnStatistique);
 		
 	
-		
-		JLabel lblBienvenueVirtual = new JLabel("Bienvenue a VIRTUAL SCHOOL");
-		lblBienvenueVirtual.setBounds(590, 0, 420, 50);
-		lblBienvenueVirtual.setBackground(new Color(255, 140, 0));
-		lblBienvenueVirtual.setForeground(new Color(244, 164, 96));
-		lblBienvenueVirtual.setFont(new Font("Times New Roman", Font.BOLD, 27));
-		
-		contentPane.add(lblBienvenueVirtual);
-		
-		
-
-		
-		
-		ImageIcon bg_image = new ImageIcon("dashboard.jpg");
-		Image img =bg_image.getImage();
-		Image temp_img = img.getScaledInstance(1000, 900,Image.SCALE_SMOOTH);
-		bg_image = new ImageIcon(temp_img);
-		JLabel lblNewLabel = new JLabel("",bg_image,JLabel.CENTER);
-		lblNewLabel.setBounds(200, 100, 1150, 900);
-		contentPane.add(lblNewLabel);
-		setVisible(true);
 	}
+
 }

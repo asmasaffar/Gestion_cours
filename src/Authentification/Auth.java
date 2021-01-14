@@ -112,14 +112,14 @@ public class Auth extends JFrame implements ActionListener {
 		   String userName = username.getText();
 	        String passWord =String.valueOf(password.getPassword()) ;
 	       
-	        String url = "jdbc:mysql://localhost:3306/cours_en_ligne?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
+	        String url = "jdbc:mysql://localhost:3306/cours_en_ligne";
 	        String user = "root";
 	        String passwd = "";
 	        Dashboard menu ;
 	     
 	        try {
 	        	
-	            Class.forName("com.mysql.cj.jdbc.Driver");
+	            Class.forName("com.mysql.jdbc.Driver");
 	            Connection conn = DriverManager.getConnection(url, user, passwd);
 	            System.out.println("Connecter");
 	            Statement st = conn.createStatement();

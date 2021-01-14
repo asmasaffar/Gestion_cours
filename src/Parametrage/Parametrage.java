@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,7 +16,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-
+import Gerer_Etudiant.Etudiant;
+import Gerer_Enseignant.Enseignant;
+import Parametrage.Parametrage;
+import planification.Planification;
+import Salle.Salle;
+import Statistique.Statistique;
 //import Gerer_Etudiant.Etudiant;
 import javax.swing.JTextField;
 import javax.swing.JTable;
@@ -93,8 +99,17 @@ public class Parametrage extends JFrame {
 		panel.add(lblDashboard);
 		
 		JButton btnGrerEtudiant = new JButton("G\u00E9rer Etudiant");
+	
 		btnGrerEtudiant.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Etudiant Etudiant ;
+				 dispose();
+				 try {
+					Etudiant = new Etudiant();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnGrerEtudiant.setFont(new Font("Times New Roman", Font.BOLD, 20));
@@ -104,13 +119,25 @@ public class Parametrage extends JFrame {
 		panel.add(btnGrerEtudiant);
 		
 		
+		
 		JButton btnGrerEnseignant = new JButton("G\u00E9rer Enseignant");
 		btnGrerEnseignant.setForeground(Color.WHITE);
 		btnGrerEnseignant.setBackground(new Color(244, 164, 96));
 		btnGrerEnseignant.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		btnGrerEnseignant.setBounds(0, 130, 204, 40);
 		panel.add(btnGrerEnseignant);
-		
+		btnGrerEnseignant.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Enseignant Enseignant ;
+				 dispose();
+				 try {
+					 Enseignant = new Enseignant();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		JButton btnParametrage = new JButton("Paramétrage");
 		btnParametrage.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		btnParametrage.addActionListener(new ActionListener() {
